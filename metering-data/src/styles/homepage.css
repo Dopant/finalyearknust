@@ -1,0 +1,23 @@
+.home-body{
+    box-sizing: border-box;
+    width: inherit;
+    height: 100vh;
+    background:#f7f7f7;
+    background-size: cover;
+}
+
+.home-body .main{
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100vh;
+}
+.home-body .main .main-content{
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    flex: 1;
+    box-sizing: border-box;
+    margin: 90px  290px;
+}
