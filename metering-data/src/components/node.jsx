@@ -31,7 +31,7 @@ class node extends React.Component{
     super(props);
   
     this.state = {
-      percentage: 25
+      percentage: ''
     };
   
     this.handleChangeEvent = this.handleChangeEvent.bind(this);
@@ -46,26 +46,42 @@ class node extends React.Component{
   
   
   
+  onChange = e => {
+		e.persist();
+		const state = this.state;
+		state[e.target.name] = e.target.value;
+		this.setState(state);
+	};
+
 	onSubmit = e => {
 		e.persist();
 		e.preventDefault();
 		console.log(e);
-		const { flowrate } = this.state;
+		const {  Flowrate: Flowrate} = this.state;
+		
+		var config = {
+				headers:{
+					'Content-Type' : 'application/json'
+				}
+		};
 
-		axios
-			.get('http://localhost:3000//getNode', { flowrate  })
-			//.then(data => console.log(data))
-			
-			.then((result) => {
-				console.log(result);
-				console.log(result.data);
-			
-				
-				
-				
-			})
-			.catch(error => console.log(error));
-          
+		// var credentials = {
+		// 	'Username': 'Dopant',
+		// 	'Password' : '1105'
+		// };
+		fetch('http://localhost:5000/getNode', {
+			Flowrate
+		}).then(res => {
+			if(res.status === 201){
+        console.log(this.data.Flowrate)
+				console.log('Fetch success');
+			}
+			else{
+        console.log(this.data.Flowrate)
+				console.log("Fetch error")
+			}
+
+		}).catch(console.log);
 	};
   
   render() {
